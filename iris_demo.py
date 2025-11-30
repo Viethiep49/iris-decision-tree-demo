@@ -55,9 +55,9 @@ pl = st.number_input("Petal Length (cm)", 0.0, 10.0, 1.4)
 pw = st.number_input("Petal Width (cm)", 0.0, 10.0, 0.2)
 
 if st.button("Dự đoán"):
-sample = [[sl, sw, pl, pw]]
-pred = model.predict(sample)
-st.success(f"Mẫu này thuộc lớp: {target_names[pred][0]}")
+    sample = [[sl, sw, pl, pw]]
+    pred = model.predict(sample)
+    st.success(f"Mẫu này thuộc lớp: {target_names[pred][0]}")
 
 # -------------------------------
 
