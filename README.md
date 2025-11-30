@@ -22,8 +22,8 @@ Demo trực quan về **Decision Tree Classifier** sử dụng **Iris Dataset**,
 1. **Clone repository**
 
 ```bash
-git clone <URL_REPO>
-cd <TEN_FOLDER>
+git clone https://github.com/Viethiep49/iris-decision-tree-demo.git
+cd <ten_folder>
 ```
 
 2. **Cài đặt Python 3.12+ và tạo môi trường ảo**
