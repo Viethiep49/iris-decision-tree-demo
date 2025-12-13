@@ -1,0 +1,278 @@
+=================================================================
+HUONG DAN SU DUNG - DECISION TREE DEMO
+=================================================================
+
+De tai: Nghien cuu ve Cay Quyet Dinh va cac Do do, Phuong phap tinh Do chinh xac Phan lop
+
+=================================================================
+CAU TRUC DU AN
+=================================================================
+
+iris-decision-tree-demo/
+├── main_app.py              # App tong hop (trang chu + huong dan)
+├── iris_demo.py             # Demo Iris - Ly thuyet co ban
+├── titanic_demo.py          # Demo Titanic - Ung dung thuc te
+├── data/
+│   └── titanic.csv          # Dataset Titanic
+├── utils/
+│   ├── __init__.py
+│   └── preprocessing.py     # Tien xu ly du lieu Titanic
+├── requirements.txt
+└── README.md
+
+=================================================================
+CAI DAT
+=================================================================
+
+1. Kich hoat moi truong ao:
+   source .venv/bin/activate
+
+2. Cai dat Graphviz (neu chua co):
+   brew install graphviz
+
+3. Kiem tra cai dat:
+   pip list | grep -E "streamlit|scikit-learn|graphviz"
+
+=================================================================
+CACH CHAY UNG DUNG
+=================================================================
+
+OPTION 1: App tong hop (KHUYEN DUNG)
+-------------------------------------
+streamlit run main_app.py
+
+- Trang chu voi huong dan day du
+- Menu chon demo Iris hoac Titanic
+- Ly thuyet ve Gini, Entropy, Metrics
+
+
+OPTION 2: Chay tung demo rieng le
+-------------------------------------
+
+Demo Iris (Ly thuyet co ban):
+    streamlit run iris_demo.py
+
+Demo Titanic (Ung dung thuc te):
+    streamlit run titanic_demo.py
+
+
+=================================================================
+NOI DUNG CAC DEMO
+=================================================================
+
+1. DEMO IRIS - LY THUYET CO BAN
+--------------------------------
+Muc tieu:
+- Hieu thuat toan Decision Tree
+- So sanh Gini vs Entropy
+- Doc va phan tich cay quyet dinh
+- Confusion Matrix & Metrics
+
+Cac tinh nang:
+- Nhap thong so hoa Iris de du doan (4 features)
+- Thay doi tham so: criterion (gini/entropy), max_depth
+- Xem Feature Importance
+- Xem cay quyet dinh
+- Confusion Matrix
+- Accuracy, Precision, Recall, F1-Score
+
+
+2. DEMO TITANIC - UNG DUNG THUC TE
+-----------------------------------
+Muc tieu:
+- Tien xu ly du lieu thuc te
+- Feature Engineering
+- Train/Test Split
+- ROC Curve & AUC
+- Model Interpretation
+
+Cac tinh nang:
+- Kham pha du lieu (EDA):
+  + Ty le song sot
+  + Song sot theo Gioi tinh
+  + Song sot theo Hang ve
+  + Phan bo Tuoi
+
+- Danh gia mo hinh:
+  + Confusion Matrix
+  + Classification Report
+  + ROC Curve & AUC
+
+- Feature Importance:
+  + Dac trung nao quan trong nhat?
+
+- Du doan tuong tac:
+  + Nhap thong tin hanh khach
+  + Du doan kha nang song sot
+  + Giai thich ket qua
+
+
+=================================================================
+KIEN THUC CHINH
+=================================================================
+
+1. CAC DO DO (IMPURITY MEASURES)
+---------------------------------
+
+Gini Index:
+    Cong thuc: Gini = 1 - Σ(pi²)
+    Y nghia: Xac suat chon 2 mau khac lop
+    Gia tri: 0 (thuan khiet) -> 0.5 (tap)
+    Uu diem: Tinh nhanh, hieu qua
+
+Entropy:
+    Cong thuc: Entropy = -Σ(pi × log2(pi))
+    Y nghia: Do hon loan cua du lieu
+    Gia tri: 0 (thuan khiet) -> log2(n_classes)
+    Uu diem: Chinh xac ve mat ly thuyet
+
+So sanh:
+    Tieu chi       | Gini         | Entropy
+    ---------------|--------------|-------------
+    Toc do         | Nhanh hon    | Cham hon
+    Do chinh xac   | Tuong duong  | Tuong duong
+    Cay tao ra     | Can bang     | Chi tiet hon
+
+
+2. PHUONG PHAP DANH GIA DO CHINH XAC
+-------------------------------------
+
+Accuracy = (TP + TN) / Total
+    - Ty le du doan dung tong the
+
+Precision = TP / (TP + FP)
+    - Do chinh xac khi du doan Positive
+    - Trong so du doan la Positive, bao nhieu % thuc su la Positive?
+
+Recall = TP / (TP + FN)
+    - Kha nang tim ra Positive
+    - Trong so thuc te la Positive, bao nhieu % duoc tim ra?
+
+F1-Score = 2 × (Precision × Recall) / (Precision + Recall)
+    - Trung binh hai hoa Precision va Recall
+
+AUC-ROC = Dien tich duoi ROC Curve
+    - Kha nang phan biet 2 lop
+    - Gia tri 1.0 la tot nhat
+
+
+=================================================================
+KICH BAN THUYET TRINH DE XUAT (20 PHUT)
+=================================================================
+
+Phan 1: Gioi thieu (2 phut)
+----------------------------
+- Cay Quyet Dinh la gi?
+- Ung dung thuc te
+
+
+Phan 2: Ly thuyet - Demo Iris (6 phut)
+---------------------------------------
+- Giai thich Gini vs Entropy (co cong thuc)
+- Demo: Thay doi criterion, so sanh ket qua
+- Doc cay quyet dinh: Di tu root den leaf
+- Feature Importance: Dac trung nao quan trong?
+- Confusion Matrix: Giai thich TP, TN, FP, FN
+
+
+Phan 3: Thuc hanh - Demo Titanic (7 phut)
+------------------------------------------
+- Kham pha du lieu (EDA):
+  + Ty le song sot: Nu 74%, Nam 19%
+  + Hang 1 song sot 63%, Hang 3 chi 24%
+  + "Women and children first"
+
+- Tien xu ly du lieu:
+  + Xu ly missing values (Age, Embarked)
+  + Encoding categorical (Sex, Embarked, Title)
+  + Feature Engineering (FamilySize, IsAlone, HasCabin, Title)
+
+- Danh gia mo hinh:
+  + Train/Test Split (80/20)
+  + Confusion Matrix
+  + ROC Curve & AUC
+
+- Feature Importance:
+  + Sex quan trong nhat
+  + Pclass, Fare dung thu 2, 3
+
+
+Phan 4: Demo tuong tac (3 phut)
+--------------------------------
+- Demo 1: Du doan hoa Iris
+  + Nhap 4 thong so
+  + Xem ket qua phan loai
+
+- Demo 2: Du doan song sot Titanic
+  + Vi du: Nam, 25 tuoi, Hang 3, di mot minh
+  + Ket qua: Tu vong (85% confidence)
+  + Giai thich: Nam + Hang 3 + Di mot minh = Kha nang thap
+
+
+Phan 5: Q&A (2 phut)
+--------------------
+- Tra loi cau hoi
+- Giai thich them neu can
+
+
+=================================================================
+SO SANH IRIS VS TITANIC
+=================================================================
+
+Tieu chi          | Iris            | Titanic
+------------------|-----------------|------------------
+So mau            | 150             | ~900
+Features          | 4 (so)          | 10+ (so + chu)
+Classes           | 3 (can bang)    | 2 (khong can bang)
+Missing values    | Khong           | Co nhieu
+Do phuc tap       | Don gian        | Phuc tap
+Muc dich          | Hoc ly thuyet   | Ung dung thuc te
+
+
+=================================================================
+TIPS THUYET TRINH
+=================================================================
+
+1. Bat dau voi Iris (don gian) -> Sau do Titanic (phuc tap)
+
+2. Nhan manh:
+   - Gini vs Entropy: 2 cach do do tap
+   - Confusion Matrix: TP, TN, FP, FN
+   - Feature Importance: Dac trung nao quan trong nhat?
+
+3. Demo tuong tac:
+   - Cho nguoi xem nhap thong so
+   - Giai thich ket qua
+
+4. Ket thuc:
+   - Tong ket kien thuc
+   - Ung dung thuc te cua Decision Tree
+
+
+=================================================================
+THAM KHAO
+=================================================================
+
+- Scikit-learn Decision Tree:
+  https://scikit-learn.org/stable/modules/tree.html
+
+- Iris Dataset:
+  https://archive.ics.uci.edu/ml/datasets/iris
+
+- Titanic Dataset:
+  https://www.kaggle.com/c/titanic
+
+- ROC Curve & AUC:
+  https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html
+
+
+=================================================================
+KET THUC HUONG DAN
+=================================================================
+
+Chuc ban thuyet trinh tot!
+
+Neu gap loi, kiem tra lai:
+1. Da kich hoat moi truong ao chua? (source .venv/bin/activate)
+2. Da cai dat Graphviz chua? (brew install graphviz)
+3. Da cai dat packages chua? (pip install -r requirements.txt)
